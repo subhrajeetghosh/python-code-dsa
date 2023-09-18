@@ -1,3 +1,6 @@
+#  Copyright (c) 2023.
+#  @Author Subhrajeet Ghosh
+
 # variable = a container for a value
 first_name = "Subhrajeet"
 last_name = "Ghosh"
@@ -5,7 +8,7 @@ full_name = first_name + " " + last_name
 print(type(full_name))  # datatype of variable
 print("Hello " + full_name)
 
-age = 21
+age = 24
 age += 1
 print(type(age))
 print(age)
