@@ -32,5 +32,15 @@ print(funny_name)
 reversed_full_name = full_name[::-1]
 print(reversed_full_name)  # reversing the string
 
+"""
+# Indexing
+[] -> this is index operator
+Positive indexing starts from the beginning of the sequence and counts up. For example, the first element in a list
+has the index 0, the second element has the index 1, and so on.
+
+Negative indexing starts from the end of the sequence and counts down. For example, the last element in a list
+has the index -1, the next-to-last element has the index -2, and so on.
+"""
+
 website = "https://google.com"
 
