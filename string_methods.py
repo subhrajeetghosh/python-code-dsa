@@ -18,3 +18,19 @@ print(name.lower())  # reverse of above
 
 name = "25"
 print(name.isdigit())  # check whether it is digit value -- here it is true
+
+# string slicing
+full_name = "John Michel"
+print_character = full_name[3]
+print(print_character)
+first_name = full_name[:4]  # also [0:4] this going to work
+print(first_name)
+last_name = full_name[5:]  # also [5:11] going to work as we are not mentioning its take upto last value
+print(last_name)
+funny_name = full_name[0:11:2]  # also you can write this [::2] here you are skiping character by loop
+print(funny_name)
+reversed_full_name = full_name[::-1]
+print(reversed_full_name)  # reversing the string
+
+website = "https://google.com"
+
