@@ -43,4 +43,5 @@ has the index -1, the next-to-last element has the index -2, and so on.
 """
 
 website = "https://google.com"
-
+slice_website = slice(8, 14)  # you can write that slice(8, -4) with negative indexing
+print(website[slice_website])  # printing "google"
