@@ -31,3 +31,11 @@ while name != "test":
 
 # Nested loop is a loop inside another loop.
 # This means that the inner loop will be executed for each iteration of the outer loop.
+
+rows = int(input("enter the number of rows you want? : "))
+column = int(input("enter the number of columns you want? : "))
+symbol = input("enter the symbol you want to print : ")
+for i in range(rows):
+    for j in range(column):
+        print(symbol, end=" ")  # end will help up keep printing in the same line with one space each time
+    print()
