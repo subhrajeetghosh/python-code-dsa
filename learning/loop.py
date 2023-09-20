@@ -39,3 +39,17 @@ for i in range(rows):
     for j in range(column):
         print(symbol, end=" ")  # end will help up keep printing in the same line with one space each time
     print()
+
+# loop control statement : change a loop excution from its normal sequence
+while True:
+    name = input("please enter your name to exit the program : ")
+    if name != "":
+        break  # break used to terminate the loop entirely
+
+phone_number = "123-53254-643"
+for i in phone_number:
+    if i == "-":
+        continue  # continue skips to the next iteration of the loop
+    elif i == 5:
+        pass  # does nothing acting as a placeholder but here it will print because not skipping iteraion
+    print(i, end="")
