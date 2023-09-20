@@ -8,6 +8,8 @@ if 16 <= temperature <= 30:
     print("temperature is normal today")
 elif temperature <= 15 and temperature % 2 == 0:  # and is for adding statement in condition
     print("temperature is coll and even!!")
+elif temperature < 0 or temperature > 30:  # or statement is for adding either statement in condition
+    print("temperature is too much deficient")
 
 if not (16 <= temperature <= 30):  # if not is a reverse statement of if
     print("temperature is not normal today")
