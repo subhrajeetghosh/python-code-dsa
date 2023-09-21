@@ -3,13 +3,11 @@
 
 # set which is unordered and unindexed containes no duplicates values
 
-
-# two sets relations
-
 a = {1, 2, 3}
-
 a.add(5)  # {1, 2, 3, 5}
 a.remove(3)  # {1, 2, 5}
+
+# two sets relations
 
 b = {2, 3, 4}
 
