@@ -21,15 +21,15 @@ if __name__ == '__main__':
 def another_method():
     score_list = {}
     for _ in range(int(input())):
-        name = input()
-        score = float(input())
-        if score in score_list:
-            score_list[score].append(name)
+        name_key = input()
+        score_value = float(input())
+        if score_value in score_list:
+            score_list[score_value].append(name_key)
         else:
-            score_list[score] = [name]
+            score_list[score_value] = [name_key]
     new_list = []
-    for i in score_list:
-        new_list.append([i, score_list[i]])
+    for scr in score_list:
+        new_list.append([scr, score_list[scr]])
     new_list.sort()
     result = new_list[1][1]
     result.sort()
