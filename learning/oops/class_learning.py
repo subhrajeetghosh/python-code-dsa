@@ -26,6 +26,8 @@ print("\n")
 
 
 class ItemConst:
+    pay_rate = 0.8  # after discounting 20% on the product price
+
     def __init__(self, product: str, price: int, quantity=0):
         assert price > 0, f"Price {price} is not valid!"
         assert quantity > 0, f"Quantity {quantity} is not valid!"
@@ -43,3 +45,5 @@ print(product1.calculate_total_price())
 
 product2 = ItemConst("Laptop", 24532, 4)
 print(product2.calculate_total_price())
+
+print(product1.pay_rate)
