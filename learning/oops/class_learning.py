@@ -39,6 +39,10 @@ class ItemConst:
     def calculate_total_price(self):
         return self.price * self.quantity
 
+    def apply_discount(self):
+        self.price = self.price * self.pay_rate
+        print(self.price)
+
 
 product1 = ItemConst("Phone", 100, 9)
 print(product1.calculate_total_price())
@@ -46,4 +50,8 @@ print(product1.calculate_total_price())
 product2 = ItemConst("Laptop", 24532, 4)
 print(product2.calculate_total_price())
 
-print(product1.pay_rate)
+product1.apply_discount()
+product2.pay_rate = 0.7
+product2.apply_discount()
+print(ItemConst.__dict__)  # all the attribute of class level
+print(product1.__dict__)  # all the attribute of intance level
