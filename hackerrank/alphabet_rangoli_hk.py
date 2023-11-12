@@ -14,6 +14,9 @@ def print_rangoli(size):
         join_str = "-".join(main_str)
         print(join_str.center(main_len, "-"))
 
+def somethign():
+    print("piri")
+
 
 if __name__ == '__main__':
     n = int(input())
