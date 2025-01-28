@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def gridGame(self, grid: List[List[int]]) -> int:
         top = [0] * len(grid[0])
