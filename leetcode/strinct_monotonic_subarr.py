@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def longestMonotonicSubarray(self, nums: List[int]) -> int:
         strictIn, strictDc, maxIn, maxDc = 1, 1, 1, 1
