@@ -1,6 +1,7 @@
 #  Copyright (c) 2025.
 #  @Author Subhrajeet Ghosh
 from collections import Counter
+from typing import List
 
 
 class Solution:
