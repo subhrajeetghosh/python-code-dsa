@@ -1,74 +1,52 @@
 #  Copyright (c) 2025.
 #  @Author Subhrajeet Ghosh
-def count_special_vegetables_optimized(A):
+def marbles_distribution(weights, k):
+    n = len(weights)
 
-    N = len(A)
+    # Edge cases
+    if k == 1:
+        return 0  # Only one bag, score is fixed (weights[0] + weights[n-1])
+    if n < k:
+        return 0  # Impossible to split into k non-empty bags
 
-    if N == 0:
+    # Recursive function: returns (min_score, max_score) for given start and bags_left
+    def distribute(start, bags_left):
+        # Base case: one bag left, use all remaining marbles
+        if bags_left == 1:
+            if start >= n:
+                return float('inf'), float('-inf')  # Invalid
+            score = weights[start] + weights[n - 1]
+            return score, score
 
-        return 0
+        # If not enough marbles for remaining bags
+        remaining = n - start
+        if remaining < bags_left:
+            return float('inf'), float('-inf')  # Invalid
 
-    # Precompute prefix sums for even and odd indices
+        min_score = float('inf')
+        max_score = float('-inf')
 
-    prefix_even = [0] * N
+        # Try all possible end points for the current bag
+        # Bag must have at least 1 marble, and leave enough for remaining bags
+        for end in range(start, n - bags_left + 1):  # Ensure enough marbles left
+            current_cost = weights[start] + weights[end]
+            # Recursively solve for remaining marbles and bags
+            sub_min, sub_max = distribute(end + 1, bags_left - 1)
+            if sub_min != float('inf'):  # Valid subproblem
+                total_min = current_cost + sub_min
+                total_max = current_cost + sub_max
+                min_score = min(min_score, total_min)
+                max_score = max(max_score, total_max)
 
-    prefix_odd = [0] * N
+        return min_score, max_score
 
-    for i in range(N):
-
-        if i == 0:
-
-            prefix_even[i] = A[i] if i % 2 == 0 else 0
-
-            prefix_odd[i] = A[i] if i % 2 != 0 else 0
-
-        else:
-
-            prefix_even[i] = prefix_even[i - 1] + (A[i] if i % 2 == 0 else 0)
-
-            prefix_odd[i] = prefix_odd[i - 1] + (A[i] if i % 2 != 0 else 0)
-
-    special_count = 0
-
-    # For each removal, recalculate the sums after re-indexing
-
-    for i in range(N):
-
-        # Left part: elements before index i (unchanged order)
-
-        left_even = prefix_even[i - 1] if i > 0 else 0
-
-        left_odd = prefix_odd[i - 1] if i > 0 else 0
-
-        # Right part: elements after index i
-
-        # When removed, these shift left by one:
-
-        # For j > i in original array, the new index is (j - 1).
-
-        # New even positions in the right part come from original odd indices.
-
-        # New odd positions in the right part come from original even indices.
-
-        right_even = prefix_even[N - 1] - prefix_even[i]
-
-        right_odd = prefix_odd[N - 1] - prefix_odd[i]
-
-        # New cart sums after removal:
-
-        even_sum = left_even + right_odd    # left even indices + shifted right odd indices
-
-        odd_sum = left_odd + right_even     # left odd indices + shifted right even indices
-
-        if even_sum == odd_sum:
-
-            special_count += 1
-
-    return special_count
-
-# Example Test Case
-A = [2,1,6,4]  # Sample array
-print(count_special_vegetables_optimized(A))  # Output: Count of special vegetables
+    # Start recursion from index 0 with k bags
+    min_score, max_score = distribute(0, k)
+    return max_score - min_score if min_score != float('inf') else 0
 
 
-#MAE: 17665.120684931506
+# Test cases
+print(marbles_distribution([1, 3, 5, 1], 2))  # Expected: 4
+print(marbles_distribution([1, 3], 2))  # Expected: 0 (n = k)
+print(marbles_distribution([1, 2, 3], 1))  # Expected: 0 (k = 1)
+print(marbles_distribution([1, 3, 5, 2, 1], 3))  # Expected: 8
